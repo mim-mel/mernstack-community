@@ -1,12 +1,15 @@
 const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
+require('dotenv').config({ path: '.env' });
 const app = express();
 const port = 5050;
 
 app.use(express.static(path.join(__dirname, '../client/build')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+const { Post } = require('./Model/Post.js');
 
 app.listen(port, () => {
   mongoose
@@ -33,6 +36,11 @@ app.get('*', (req, res) => {
 //body-parsor
 
 app.post('/api/test', (req, res) => {
-  console.log(req.body);
-  res.status(200).json({ sucess: true, text: '안녕하세요' });
+  const CommunityPost = new Post({
+    title: 'title-test',
+    content: 'content-test',
+  });
+  CommunityPost.save().then(() => {
+    res.status(200).json({ sucess: true, text: '안녕하세요' });
+  });
 });
