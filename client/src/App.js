@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import List from './Components/List';
 import Upload from './Components/Upload';
-import Heading from './Components/Heading';
+import Layout from './Components/Layout';
 
 function App() {
   const [content, setContent] = useState('');
@@ -13,29 +13,30 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path='/' element={<Heading />} />
-        <Route
-          path='/upload'
-          element={
-            <Upload
-              contentList={contentList}
-              setContentList={setContentList}
-              content={content}
-              setContent={setContent}
-            />
-          }
-        />
-        <Route
-          path='/list'
-          element={
-            <List
-              contentList={contentList}
-              setContentList={setContentList}
-              content={content}
-              setContent={setContent}
-            />
-          }
-        />
+        <Route path='/' element={<Layout />}>
+          <Route
+            path='/upload'
+            element={
+              <Upload
+                contentList={contentList}
+                setContentList={setContentList}
+                content={content}
+                setContent={setContent}
+              />
+            }
+          />
+          <Route
+            path='/list'
+            element={
+              <List
+                contentList={contentList}
+                setContentList={setContentList}
+                content={content}
+                setContent={setContent}
+              />
+            }
+          />
+        </Route>
       </Routes>
     </BrowserRouter>
   );
