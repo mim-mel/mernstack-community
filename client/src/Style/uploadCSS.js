@@ -1,9 +1,8 @@
 import styled from '@emotion/styled';
 
 const UploadDiv = styled.div`
-  width: 100%;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+  width: 1100px;
+  margin: 100px auto;
 `;
 
 const UploadForm = styled.form`
