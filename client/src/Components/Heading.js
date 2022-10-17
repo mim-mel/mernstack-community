@@ -1,39 +1,55 @@
-import { Link } from 'react-router-dom';
-import { Navbar, Container, Nav } from 'react-bootstrap';
+import { useEffect, useState } from 'react';
+import {
+  NavBackground,
+  Nav,
+  Logo,
+  UlWrap,
+  Ul,
+  StyledLink,
+  BurgerIcon,
+} from '../Style/HeadingCSS';
 
 const Heading = () => {
+  const [dropdownMenu, setDropdownMenu] = useState(false);
+
+  const dropdownToggle = () => {
+    if (dropdownMenu === false) {
+      setDropdownMenu(true);
+    } else {
+      setDropdownMenu(false);
+    }
+  };
+
   return (
-    <Navbar bg='dark' expand='lg' variant='dark'>
-      <Container>
-        <Navbar.Brand href='#home'>React-Bootstrap</Navbar.Brand>
-        <Navbar.Toggle aria-controls='basic-navbar-nav' />
-        <Navbar.Collapse id='basic-navbar-nav'>
-          <Nav className='me-auto'>
-            <Nav.Link>
-              <Link to='/' style={{ color: 'white', textDecoration: 'none' }}>
-                Home
-              </Link>
-            </Nav.Link>
-            <Nav.Link>
-              <Link
-                to='/upload'
-                style={{ color: 'white', textDecoration: 'none' }}
-              >
-                Upload
-              </Link>
-            </Nav.Link>
-            <Nav.Link>
-              <Link
-                to='/list'
-                style={{ color: 'white', textDecoration: 'none' }}
-              >
-                List
-              </Link>
-            </Nav.Link>
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
+    <NavBackground>
+      <Nav>
+        <Logo>
+          <img src="image/beer.png" alt="beer-logo" />
+          Beer-Pong
+        </Logo>
+        <UlWrap dropdownMenu={dropdownMenu}>
+          <Ul>
+            <StyledLink to="/upload">UPLOAD</StyledLink>
+            <StyledLink to="/list" marginleft="true">
+              LIST
+            </StyledLink>
+          </Ul>
+          <Ul marginleft="true">
+            <StyledLink to="">LOGOUT</StyledLink>
+            <StyledLink to="" marginleft="true">
+              MYPAGE
+            </StyledLink>
+          </Ul>
+        </UlWrap>
+        <BurgerIcon
+          onClick={() => {
+            dropdownToggle();
+          }}
+          src={dropdownMenu ? 'image/cross.png' : 'image/menu-burger.png'}
+          alt="menu-burger"
+        />
+      </Nav>
+    </NavBackground>
   );
 };
 
