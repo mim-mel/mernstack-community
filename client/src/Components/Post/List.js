@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
-const List = ({ contentList, setContentList, content, setContent }) => {
+const List = ({ ContentList, setContentList, Content, setContent }) => {
   const [text, setText] = useState('');
 
   useEffect(() => {
@@ -10,7 +10,7 @@ const List = ({ contentList, setContentList, content, setContent }) => {
     };
 
     axios
-      .post('/api/test', body)
+      .post('/api/post/submit', body)
       .then((res) => {
         console.log(res);
         setText(res.data.text);
@@ -20,14 +20,14 @@ const List = ({ contentList, setContentList, content, setContent }) => {
       });
   }, []);
 
-  console.log(content);
-  console.log(contentList);
+  console.log(Content);
+  console.log(ContentList);
 
   return (
     <div>
       <h1>List</h1>
       <h3>{text}</h3>
-      {contentList.map((content, idx) => {
+      {ContentList.map((content, idx) => {
         return <div key={idx}>내용:{content}</div>;
       })}
     </div>

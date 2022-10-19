@@ -35,12 +35,15 @@ app.get('*', (req, res) => {
 //유저가 어떤 URL로 들어오든 동일하게 index.html파일을 띄워준다. URL에 따른 화면의 전환은 클라이언트측에서 react router가 조정한다.
 //body-parsor
 
-app.post('/api/test', (req, res) => {
-  const CommunityPost = new Post({
-    title: 'title-test',
-    content: 'content-test',
-  });
-  CommunityPost.save().then(() => {
-    res.status(200).json({ sucess: true, text: '안녕하세요' });
-  });
+app.post('/api/post/submit', (req, res) => {
+  let temp = req.body;
+  const CommunityPost = new Post(temp);
+  CommunityPost.save()
+    .then(() => {
+      res.status(200).json({ sucess: true });
+      console.log(temp);
+    })
+    .catch((err) => {
+      res.status(400).json({ sucess: false });
+    });
 });
