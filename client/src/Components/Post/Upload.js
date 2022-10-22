@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { UploadDiv, UploadForm, UploadButtonDiv } from '../../Style/uploadCSS';
+import { UploadDiv, UploadForm, UploadButtonDiv } from '../../Style/UploadCSS';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
@@ -7,7 +7,7 @@ const Upload = ({ ContentList, setContentList }) => {
   const [Title, setTitle] = useState('');
   const [Content, setContent] = useState('');
 
-  let navigate = useNavigate;
+  let navigate = useNavigate();
 
   const onSubmit = (e) => {
     e.preventDefault();
