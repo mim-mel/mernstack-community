@@ -40,10 +40,21 @@ app.post('/api/post/submit', (req, res) => {
   const CommunityPost = new Post(temp);
   CommunityPost.save()
     .then(() => {
-      res.status(200).json({ sucess: true });
+      res.status(200).json({ success: true });
       console.log(temp);
     })
     .catch((err) => {
-      res.status(400).json({ sucess: false });
+      res.status(400).json({ success: false });
+    });
+});
+
+app.post('/api/post/list', (req, res) => {
+  Post.find()
+    .exec()
+    .then((doc) => {
+      res.status(200).json({ success: true, postList: doc });
+    })
+    .catch((err) => {
+      res.status(400).json({ success: false });
     });
 });
