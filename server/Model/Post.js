@@ -5,6 +5,7 @@ const PostSchema = new mongoose.Schema(
   {
     title: String,
     content: String,
+    postNum: Number,
   },
   { collection: 'Posts' }
 );
