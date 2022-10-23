@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import {
   NavBackground,
   Nav,
@@ -24,19 +24,19 @@ const Heading = () => {
     <NavBackground>
       <Nav>
         <Logo>
-          <img src="image/beer.png" alt="beer-logo" />
+          <img src='image/beer.png' alt='beer-logo' />
           Beer-Pong
         </Logo>
         <UlWrap dropdownMenu={dropdownMenu}>
           <Ul>
-            <StyledLink to="/upload">UPLOAD</StyledLink>
-            <StyledLink to="/list" marginleft="true">
+            <StyledLink to='/upload'>UPLOAD</StyledLink>
+            <StyledLink to='/list' marginleft='true'>
               LIST
             </StyledLink>
           </Ul>
-          <Ul marginleft="true">
-            <StyledLink to="">LOGOUT</StyledLink>
-            <StyledLink to="" marginleft="true">
+          <Ul marginleft='true'>
+            <StyledLink to=''>LOGOUT</StyledLink>
+            <StyledLink to='' marginleft='true'>
               MYPAGE
             </StyledLink>
           </Ul>
@@ -46,7 +46,7 @@ const Heading = () => {
             dropdownToggle();
           }}
           src={dropdownMenu ? 'image/cross.png' : 'image/menu-burger.png'}
-          alt="menu-burger"
+          alt='menu-burger'
         />
       </Nav>
     </NavBackground>
